@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Parts found {% endblock %}
+
+{% block body %}
+    <h1>Parts found</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>PartName</th>
+                <th>PartPrice</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for part in parts %}
+            <tr>
+                <td>{{ part.id }}</td>
+                <td>{{ part.PartName }}</td>
+                <td>{{ part.PartPrice }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <button onclick="window.location.href = '/car_has_part'">Назад</button>
+{% endblock %}

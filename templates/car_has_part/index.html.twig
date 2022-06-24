@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Сompatibility{% endblock %}
+
+{% block body %}
+{% block menu %}
+{% endblock %}
+
+<br><br>
+<form action="/car_has_part" method="get">
+        <label> Автомобиль: </label>
+            <select name="car" required>
+                {% for car in cars %}
+                        <option value="{{ car.id }}">{{ car.ModelName }} {{ car.VIN }}</option>
+                {% endfor %}
+            </select>
+        <br><br>
+        <label> Цена: </label>
+        <input type="number" min="0" name="price_from" placeholder="от" style="width: 77px;">
+        <input type="number" min="0" name="price_to" placeholder="до" style="width: 77px;">
+        
+        <br><br>
+    <input type="submit" value="Показать">
+</form>
+<br><br>
+<form action="/car_has_part" method="get">
+        <label> Запчасть: </label>
+            <select name="part" required>
+                {% for part in parts %}
+                        <option value="{{ part.id }}">{{ part.PartName }} {{ part.PartPrice }}</option>
+                {% endfor %}
+            </select>
+        <br><br>
+    <input type="submit" value="Показать">
+</form>
+
+
+{% endblock %}

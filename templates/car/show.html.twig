@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Car{% endblock %}
+
+{% block body %}
+    <h1>Car</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ car.id }}</td>
+            </tr>
+            <tr>
+                <th>EngineName</th>
+                <td>{{ car.EngineName }}</td>
+            </tr>
+            <tr>
+                <th>ReleaseDate</th>
+                <td>{{ car.ReleaseDate }}</td>
+            </tr>
+            <tr>
+                <th>TransmissionType</th>
+                <td>{{ car.TransmissionType }}</td>
+            </tr>
+            <tr>
+                <th>DriveType</th>
+                <td>{{ car.DriveType }}</td>
+            </tr>
+            <tr>
+                <th>VIN</th>
+                <td>{{ car.VIN }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_car_index') }}">back to list</a>
+
+    <a href="{{ path('app_car_edit', {'id': car.id}) }}">edit</a>
+
+    {{ include('car/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            <link href="{{ asset('style.css') }}" rel="stylesheet" />
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+        
+    </head>
+    <body>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <button onclick="window.location.href = '{{ path('app_car_index') }}'">Автомобили</button>
+                <button onclick="window.location.href = '{{ path('app_part_index') }}'">Запчасти</button>
+                <button onclick="window.location.href = '/car_has_part'">Совместимость
+                </button>
+                <button onclick="window.location.href = '{{ path('app_logout') }}'"
+                style="margin-left:27px;">Выйти</button>
+                <br><br>
+                <button onclick="window.location.href = '{{ path('app_country_index') }}'">Страны</button>
+                <button onclick="window.location.href = '{{ path('app_manufacturer_index') }}'">Производители запчастей</button>
+                <button onclick="window.location.href = '{{ path('app_brand_index') }}'">Марки</button>
+                <button onclick="window.location.href = '{{ path('app_model_index') }}'">Модели</button>
+            {% else %}
+                <button onclick="window.location.href = '{{ path('app_login') }}'">Войти</button>            
+                <button onclick="window.location.href = '{{ path('app_register') }}'">Регистрация</button>
+            {% endif %}
+        {% block body %}{% endblock %}
+    </body>
+</html>
